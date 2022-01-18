@@ -4,36 +4,252 @@
     padding: 0;
 }
 
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html,
 body {
-    background-color: #21252b;
-    color: #9da5b4;
+    background-color: #222222;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
 }
 
-.header{
-    display:flex;
-    background-color: #282c34;
+button {
+    background-color: transparent;
+    color: #7e7e7e;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    background-color: #111111;
     height: 35px;
-    align-items:center;
+    align-items: center;
 }
 
-.header img{
+.header img {
     width: 20px;
     height: 20px;
     margin-left: 14px;
 }
 
-.header ul{
+.header ul {
     height: 34px;
     margin-top: 15px;
     margin-left: 22px;
 }
 
-.header ul li{
+.header ul li {
     display: inline;
     padding: 8px;
-    
 }
 
-.header ul li:hover{
+.header ul li:hover {
     background-color: #383b41;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60px;
+    background-color: #111111;
+    height: 100%;
+}
+
+.menu ul li {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.menu ul li i {
+    font-size: 30px;
+    color: #4b4b4b;
+}
+
+.menu ul li .active {
+    color: #888888;
+}
+
+.menu ul li i:hover {
+    color: #888888;
+}
+
+.footer_icons_menu {
+    margin-top: auto;
+    margin-bottom: 45px;
+}
+
+.container {
+    position: absolute;
+    z-index: -1;
+    display: flex;
+    flex-direction: row;
+    top: 35px;
+    /* Header Height */
+    bottom: 26px;
+    /* Footer Height */
+    width: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.footer {
+    height: 26px;
+    background-color: #111111;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.explorer {
+    width: 200px;
+    background-color: #111111;
+}
+
+.explorer_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #666666;
+    font-size: 12px;
+    padding-left: 21px;
+    margin-bottom: 3px;
+}
+
+.explorer_header i {
+    font-size: 18px;
+    margin-right: 7px;
+}
+
+.repository {
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.repository a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color: #777777;
+}
+
+.repository ion-icon {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.folders a {
+    text-decoration: none;
+    color: #777777;
+}
+
+.folders li:hover {
+    background-color: #333333;
+}
+
+.folders li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.folders li img {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
+}
+
+.link_folders {
+    margin-left: 16px;
+}
+
+.body_content {
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    padding-left: 265px;
+}
+
+#numbers {
+    position: absolute;
+    text-align: right;
+    color: #7e7e7e;
+}
+
+.row_numbers {
+    margin-left: 10px;
+}
+
+.code {
+    padding-left: 45px;
+    padding-bottom: 30px;
+}
+
+.page_select {
+    width: 100%;
+    padding: 5px 0 5px 8px;
+    background-color: #111111;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    margin-left: 1px;
+    margin-right: 0px;
+}
+
+.page_select a {
+    color: #b4b4b4;
+}
+
+.page_select .button {
+    display: flex;
+    align-items: center;
+    background-color: #222222;
+    width: 95px;
+    padding: 5px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-left: 10px;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    margin-left: -10px;
+    margin-right: 0;
+    font-size: 12px;
+}
+
+.button i {
+    font-size: 15px;
+    margin-top: 0.5px;
+    margin-left: 2px;
+}
+
+.page_select img {
+    width: 17px;
+    height: 17px;
+    margin-right: 5px;
 }
