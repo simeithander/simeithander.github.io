@@ -1,134 +1,633 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Simei Thander - Portifólio</title>
     <meta name="description" content="Portifólio pessoal" />
     <meta name="Simei Thander" content="simeithander@gmail.com" />
-    <link rel="icon" href="./images/favicon.ico">
-    <!-- Boostrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./images/favicon.ico" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet" />
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-    <div class="header">
-        <img src="images/vscode.png" />
-        <ul>
-            <li><button>File</button></li>
-            <li><button>Edit</button></li>
-            <li><button>Selection</button></li>
-            <li><button>View</button></li>
-            <li><button>Go</button></li>
-            <li><button>Run</button></li>
-            <li><button>Terminal</button></li>
-            <li><button>Help</button></li>
-        </ul>
+    <style>
+      * {
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        overflow: hidden;
+      }
+      .file-item {
+        padding: 4px 8px;
+        cursor: pointer;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #cccccc;
+        font-size: 13px;
+      }
+      .file-item:hover {
+        background-color: #2a2d2e;
+      }
+      .file-item.active {
+        background-color: #37373d;
+      }
+      .folder-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+      }
+      .file-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+      }
+      .menu-item {
+        padding: 4px 12px;
+        cursor: default;
+        color: #cccccc;
+        font-size: 13px;
+      }
+      .menu-item:hover {
+        background-color: #2a2d2e;
+      }
+      /* Scrollbar customizado estilo VS Code */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e1e1e;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #424242;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4e4e4e;
+      }
+      /* Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #424242 #1e1e1e;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#1e1e1e] text-[#cccccc] flex flex-col h-screen">
+    <!-- Barra Superior (Menu Bar) -->
+    <div class="bg-[#2d2d30] h-8 flex items-center border-b border-[#3e3e42]">
+      <div class="flex items-center h-full">
+        <span class="menu-item">File</span>
+        <span class="menu-item">Edit</span>
+        <span class="menu-item">Selection</span>
+        <span class="menu-item">View</span>
+        <span class="menu-item">Go</span>
+        <span class="menu-item">Run</span>
+        <span class="menu-item">Terminal</span>
+        <span class="menu-item">Help</span>
+      </div>
     </div>
-    <div class="container">
-        <div class="sidebar">
-            <div class="menu">
-                <ul>
-                    <li>
-                        <a href="#"><i class="bi bi-files active"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="bi bi-search"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="bi bi-git"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="bi bi-boxes"></i></a>
-                    </li>
-                </ul>
-                <ul class="footer_icons_menu">
-                    <li>
-                        <a href="#">
-                            <i class="bi bi-person-circle"></i>
-                        </a>
-                    </li>
-                    <li><a href="#"><i class="bi bi-gear"></i></a></li>
-                </ul>
-            </div>
-            <div class="explorer">
-                <div class="explorer_header">
-                    EXPLORER <i class="bi bi-three-dots"></i>
-                </div>
-                <div class="repository">
-                    <a href="#">
-                        <ion-icon name="chevron-down-outline"></ion-icon>
-                        SIMEITHANDER.GITHUB.IO
-                    </a>
-                </div>
-                <ul class="folders">
-                    <a href="#">
-                        <li>
-                            <ion-icon name="chevron-forward-outline"></ion-icon>
-                            <img src="https://img.icons8.com/color/48/000000/pictures-folder.png" /> images
-                        </li>
-                    </a>
-                    <a href="#">
-                        <li>
-                            <img class="link_folders" src="https://img.icons8.com/color/48/000000/html-5--v1.png" />index.html
-                        </li>
-                    </a>
-                    <a href="#">
-                        <li>
-                            <img class="link_folders" src="https://img.icons8.com/color/48/000000/css3.png" />style.css
-                        </li>
-                    </a>
-                </ul>
-            </div>
+
+    <div class="flex flex-1 overflow-hidden">
+      <!-- Barra Lateral Esquerda (Activity Bar) -->
+      <aside
+        class="w-12 bg-[#252526] flex flex-col items-center py-2 border-r border-[#3e3e42]"
+      >
+        <div
+          class="w-10 h-10 mb-4 flex items-center justify-center cursor-pointer hover:bg-[#2a2d2e] rounded"
+        >
+          <svg
+            class="w-5 h-5 text-[#cccccc]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+            />
+          </svg>
         </div>
-        <div class="body_content">
-            <div class="page_select">
-                <a href="#">
-                    <div class="button">
-                        <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" />index.html <i class="bi bi-x"></i>
-                    </div>
-                </a>
-            </div>
-            <div class="row_numbers">
-                <div id="numbers"></div>
-            </div>
-            <div class="code" id="code">
-                código aqui
-            </div>
+        <div
+          class="w-10 h-10 mb-2 flex items-center justify-center cursor-pointer hover:bg-[#2a2d2e] rounded"
+        >
+          <svg
+            class="w-5 h-5 text-[#cccccc]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
         </div>
+        <div
+          class="w-10 h-10 mb-2 flex items-center justify-center cursor-pointer hover:bg-[#2a2d2e] rounded"
+        >
+          <svg
+            class="w-5 h-5 text-[#cccccc]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+        </div>
+      </aside>
+
+      <!-- Painel Lateral (Sidebar) - Explorer -->
+      <div class="w-64 bg-[#252526] border-r border-[#3e3e42] flex flex-col">
+        <div
+          class="h-9 bg-[#2d2d30] flex items-center px-4 text-xs font-semibold text-[#cccccc] uppercase border-b border-[#3e3e42]"
+        >
+          Explorer
+        </div>
+        <div class="flex-1 overflow-y-auto p-2">
+          <div class="text-xs font-semibold text-[#858585] uppercase mb-2 px-2">
+            SIMEITHANDER.GITHUB.IO
+          </div>
+          <div class="file-item active" onclick="scrollToSection('inicio')">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>inicio.md</span>
+          </div>
+          <div class="file-item" onclick="scrollToSection('carreira')">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>carreira-profissional.md</span>
+          </div>
+          <div class="file-item" onclick="scrollToSection('formacao')">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>formacao.md</span>
+          </div>
+          <div class="file-item" onclick="scrollToSection('contato')">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>contato.md</span>
+          </div>
+          <div
+            class="text-xs font-semibold text-[#858585] uppercase mb-2 mt-4 px-2"
+          >
+            images
+          </div>
+          <div class="file-item pl-6">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>favicon.ico</span>
+          </div>
+          <div class="file-item pl-6">
+            <svg class="file-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M13 6l-5-5v4H3v7h10V6zM2 4h6V0l6 6v8H2V4z" />
+            </svg>
+            <span>vscode.png</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Área de Conteúdo Principal -->
+      <main class="flex-1 overflow-y-auto bg-[#1e1e1e]">
+        <!-- Seção Início -->
+        <section id="inicio" class="min-h-screen p-8">
+          <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-semibold text-white mb-4">
+              Simei Thander
+            </h1>
+            <p class="text-xl text-[#858585] mb-2">
+              Desenvolvedor Front-end Pleno
+            </p>
+            <p class="text-sm text-[#858585] mb-8">
+              Vila | Natal, Rio Grande do Norte, Brasil
+            </p>
+            <div class="bg-[#252526] rounded p-6 border border-[#3e3e42] mb-6">
+              <h2 class="text-2xl font-semibold text-white mb-4">Resumo</h2>
+              <p class="text-[#cccccc] leading-relaxed mb-4">
+                Desenvolvedor Full Stack | ReactJS, Next.js, React Native,
+                Laravel, Azure, Docker | DevOps com GitLab Runner | Ex-Suporte
+                Técnico
+              </p>
+              <p class="text-[#cccccc] leading-relaxed mb-4">
+                Sou formado em Análise e Desenvolvimento de Sistemas pelo
+                Instituto Federal de Educação, Ciência e Tecnologia do Rio
+                Grande do Norte (IFRN), com sólida experiência prática tanto no
+                desenvolvimento de software quanto no suporte técnico. Iniciei
+                minha carreira atendendo diretamente clientes na área de suporte
+                em sistemas operacionais e hardware, o que fortaleceu minhas
+                habilidades de comunicação e resolução de problemas.
+              </p>
+              <p class="text-[#cccccc] leading-relaxed mb-4">
+                Atualmente, atuo como desenvolvedor full stack, com foco em
+                soluções modernas para web e mobile. No Front-End, utilizo
+                ReactJS, Next.js e React Native para criar interfaces intuitivas
+                e responsivas. No Back-End, tenho experiência com PHP (Laravel),
+                além de integração com ambientes em nuvem (Azure) e pipelines de
+                CI/CD usando GitLab Runner e Docker para automação e entrega
+                contínua.
+              </p>
+              <p class="text-[#cccccc] leading-relaxed">
+                Busco sempre otimizar processos, padronizar código e entregar
+                soluções escaláveis. Tenho também experiência com TypeScript,
+                NestJS, Django, e práticas DevOps que envolvem infraestrutura
+                como código e containers.
+              </p>
+            </div>
+            <div class="bg-[#252526] rounded p-6 border border-[#3e3e42]">
+              <h2 class="text-2xl font-semibold text-white mb-4">
+                Principais Competências
+              </h2>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Gestão de projetos</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Arquitetura de software</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >GitLab</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >ReactJS</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Next.js</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >React Native</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Laravel</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Azure</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Docker</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >TypeScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >NestJS</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] text-[#4ec9b0] rounded text-sm border border-[#3e3e42]"
+                  >Django</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção Carreira Profissional -->
+        <section id="carreira" class="min-h-screen p-8 bg-[#252526]">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-semibold text-white mb-8">
+              Carreira Profissional
+            </h2>
+            <div class="space-y-6">
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Desenvolvedor Front-end Pleno
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Vila • junho de 2023 - Presente (2 anos 6 meses)
+                </p>
+                <p class="text-[#858585] mb-3">
+                  Natal, Rio Grande do Norte, Brasil
+                </p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Desenvolvedor Front-end Junior
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Vila • dezembro de 2021 - junho de 2023 (1 ano 7 meses)
+                </p>
+                <p class="text-[#858585] mb-3">
+                  Natal, Rio Grande do Norte, Brasil
+                </p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Desenvolvedor full stack
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Mapia.Ai • maio de 2021 - novembro de 2021 (7 meses)
+                </p>
+                <p class="text-[#858585] mb-3">
+                  Natal, Rio Grande do Norte, Brasil
+                </p>
+                <p class="text-[#cccccc]">
+                  Analisar e desenvolver sistemas com Laravel Backend e Blade
+                  Front end
+                </p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Desenvolvedor front-end
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Máquina do Bem • abril de 2021 - maio de 2021 (2 meses)
+                </p>
+                <p class="text-[#858585] mb-3">São Paulo, Brasil</p>
+                <p class="text-[#cccccc]">Frontend ReactJS</p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Desenvolvedor front-end web e mobile
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Secretaria de Estado do Trabalho, da Habitação e da
+                  Assistência Social - SETHAS • março de 2020 - abril de 2021 (1
+                  ano 2 meses)
+                </p>
+                <p class="text-[#858585] mb-3">Rio Grande do Norte, Brasil</p>
+                <p class="text-[#cccccc]">
+                  Desenvolvimento front-end em React JS para web e aplicativos
+                  mobile utilizando React Native em conjunto com dados offline
+                  utilizando RealmDB e conexão com API em Django Rest Framework.
+                </p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Projeto de Extensão Contínuo: Apoio ao Desenvolvimento de
+                  Soluções Tecnológicas para a SETHAS/RN
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  IFRN • julho de 2020 - março de 2021 (9 meses)
+                </p>
+                <p class="text-[#858585] mb-3">
+                  Natal, Rio Grande do Norte, Brasil
+                </p>
+                <p class="text-[#cccccc]">
+                  Desenvolver por força estatutária atividades de pesquisa,
+                  ensino e desenvolvimento institucional com o escopo de criar
+                  um Núcleo de Desenvolvimento em TI (Tecnologia da Informação)
+                  na SETHAS para a implementação de projetos de inovação
+                  tecnológica tendo como objeto a reestruturação e aprimoramento
+                  de aplicativos já existentes e o desenvolvimento de novas
+                  soluções em Tecnologia da Informação, compatíveis com o
+                  Sistema Unificado de Administração Pública (SUAP), voltados
+                  para atender às necessidades de implementação de ferramentas
+                  de controle, monitoramento e apoio à gestão dos Programas de
+                  Segurança Alimentar: o Programa Leite Potiguar e o Programa
+                  Restaurante Popular.
+                </p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Técnico de Suporte - 2N
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Lanlink Informática • janeiro de 2013 - julho de 2018 (5 anos
+                  7 meses)
+                </p>
+                <p class="text-[#858585] mb-3">Natal e Região, Brasil</p>
+              </div>
+              <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Suporte técnico em Informática
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">
+                  Polícia Federal • janeiro de 2012 - janeiro de 2013 (1 ano 1
+                  mês)
+                </p>
+                <p class="text-[#858585] mb-3">Lagoa nova, Natal</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção Formação -->
+        <section id="formacao" class="min-h-screen p-8">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-semibold text-white mb-8">Formação</h2>
+            <div class="space-y-6">
+              <div class="bg-[#252526] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Tecnólogo, Tecnologia em Análise e Desenvolvimento de Sistemas
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">IFRN • 2018 - 2021</p>
+              </div>
+              <div class="bg-[#252526] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Técnico, Informática
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">IFRN • 2010 - 2012</p>
+              </div>
+              <div class="bg-[#252526] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-2">
+                  Curso Profissionalizante, Web Design
+                </h3>
+                <p class="text-[#4ec9b0] mb-2">Senac Brasil • 2009</p>
+              </div>
+              <div class="bg-[#252526] rounded p-6 border border-[#3e3e42]">
+                <h3 class="text-xl font-semibold text-white mb-4">
+                  Certificações
+                </h3>
+                <ul class="list-disc list-inside text-[#cccccc] space-y-2 ml-4">
+                  <li>
+                    Microsoft® Certified Technology Specialist: Windows 7,
+                    Configuration
+                  </li>
+                  <li>
+                    Next.js e React - Curso Completo 2021 - Aprenda com Projetos
+                  </li>
+                  <li>Método Kanban para EXIN</li>
+                  <li>Microsoft Specialist: Windows 7, Configuring</li>
+                  <li>
+                    Aprenda Golang do Zero! Desenvolva uma APLICAÇÃO COMPLETA!
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" class="min-h-screen p-8 bg-[#252526]">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-semibold text-white mb-8">Contato</h2>
+            <div class="bg-[#1e1e1e] rounded p-6 border border-[#3e3e42]">
+              <p class="text-[#cccccc] mb-6">
+                Entre em contato comigo através dos canais abaixo:
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center gap-4">
+                  <svg
+                    class="w-6 h-6 text-[#4ec9b0]"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <a
+                    href="mailto:simeithander@gmail.com"
+                    class="text-[#4ec9b0] hover:underline"
+                  >
+                    simeithander@gmail.com
+                  </a>
+                </div>
+                <div class="flex items-center gap-4">
+                  <svg
+                    class="w-6 h-6 text-[#4ec9b0]"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.533.96-.896 1.382-.42.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.533-1.379-.896-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"
+                    />
+                  </svg>
+                  <a
+                    href="https://github.com/simeithander"
+                    target="_blank"
+                    class="text-[#4ec9b0] hover:underline"
+                  >
+                    GitHub
+                  </a>
+                </div>
+                <div class="flex items-center gap-4">
+                  <svg
+                    class="w-6 h-6 text-[#4ec9b0]"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                  <a
+                    href="https://www.linkedin.com/in/simei-thander-96096987"
+                    target="_blank"
+                    class="text-[#4ec9b0] hover:underline"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
+
+    <!-- Barra de Status (Status Bar) -->
+    <div
+      class="h-6 bg-[#252526] flex items-center justify-between px-4 text-xs text-[#cccccc] border-t border-[#3e3e42]"
+    >
+      <div class="flex items-center gap-4">
+        <span>meu-portifolio*</span>
+        <span class="flex items-center gap-1">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span>main</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>simeithander.github.io</span>
+        <span>0 0 0 hrs 2 mins</span>
+        <span>Desenvolvido por Simei Thander</span>
+      </div>
     </div>
-    <div class="footer">tedfdfste</div>
+
     <script>
-        function getLinesCount(element) {
-            var prevLH = element.style.lineHeight;
-            var factor = 1000;
-            element.style.lineHeight = factor + 'px';
+      const sectionFileMap = {
+        inicio: "inicio.md",
+        carreira: "carreira-profissional.md",
+        formacao: "formacao.md",
+        contato: "contato.md",
+      };
 
-            var height = element.getBoundingClientRect().height;
-            element.style.lineHeight = prevLH;
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
 
-            return Math.floor(height / factor);
+          // Atualiza o arquivo ativo
+          document.querySelectorAll(".file-item").forEach((item) => {
+            item.classList.remove("active");
+            if (item.textContent.trim() === sectionFileMap[sectionId]) {
+              item.classList.add("active");
+            }
+          });
         }
-        var text = "<ul>";
-        for (var i = 1; i <= getLinesCount(document.getElementById("code")); i++) {
-            text = text + "<li>" + i + "</li>";
-        }
-        text = text + "</ul>";
+      }
 
-        document.getElementById("numbers").innerHTML = text;
+      // Atualiza o arquivo ativo baseado na posição do scroll
+      const main = document.querySelector("main");
+      main.addEventListener("scroll", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const scrollY = main.scrollTop;
+
+        sections.forEach((section) => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - 100;
+          const sectionId = section.getAttribute("id");
+
+          if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            document.querySelectorAll(".file-item").forEach((item) => {
+              item.classList.remove("active");
+              if (item.textContent.trim() === sectionFileMap[sectionId]) {
+                item.classList.add("active");
+              }
+            });
+          }
+        });
+      });
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
-
+  </body>
 </html>
