@@ -1,0 +1,221 @@
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow: hidden;
+}
+
+.file-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #cccccc;
+  font-size: 13px;
+}
+
+.file-item:hover {
+  background-color: #2a2d2e;
+}
+
+.file-item.active {
+  background-color: #37373d;
+}
+
+.folder-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.file-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.menu-item {
+  padding: 4px 12px;
+  cursor: default;
+  color: #cccccc;
+  font-size: 13px;
+}
+
+.menu-item:hover {
+  background-color: #2a2d2e;
+}
+
+/* Menu Hambúrguer Mobile */
+.mobile-menu-btn {
+  display: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-btn:hover {
+  background-color: #2a2d2e;
+}
+
+.mobile-menu-btn svg {
+  width: 18px;
+  height: 18px;
+  color: #cccccc;
+}
+
+/* Botão hambúrguer dentro da Activity Bar (quando menu aberto) */
+.activity-bar-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.activity-bar-menu-btn:hover {
+  background-color: #2a2d2e;
+}
+
+.activity-bar-menu-btn svg {
+  width: 20px;
+  height: 20px;
+  color: #cccccc;
+}
+
+/* Overlay para mobile */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.mobile-overlay.active {
+  display: block;
+}
+
+/* Scrollbar customizado estilo VS Code */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4e4e4e;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #424242 #1e1e1e;
+}
+
+/* Media Queries para Mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .menu-bar {
+    display: flex;
+  }
+
+  .activity-bar.active .activity-bar-menu-btn {
+    display: flex !important;
+  }
+
+  .activity-bar {
+    position: fixed;
+    left: -48px;
+    top: 0;
+    height: 100vh;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .activity-bar.active {
+    left: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -256px;
+    top: 0;
+    height: 100vh;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 48px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .status-bar {
+    flex-direction: column;
+    height: auto;
+    min-height: 48px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .status-bar > div {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .status-bar span {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .file-item {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .file-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
