@@ -46,10 +46,53 @@ body {
   cursor: default;
   color: #cccccc;
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .menu-item:hover {
   background-color: #2a2d2e;
+}
+
+/* Menu items responsivos - ocultar em telas menores */
+.menu-item-more {
+  display: none;
+}
+
+.menu-item-hide-lg {
+  display: inline-block;
+}
+
+.menu-item-hide-md {
+  display: inline-block;
+}
+
+.menu-item-hide-sm {
+  display: inline-block;
+}
+
+/* Telas médias - ocultar alguns itens e mostrar "..." */
+@media (max-width: 1024px) {
+  .menu-item-hide-lg {
+    display: none;
+  }
+
+  .menu-item-more {
+    display: inline-block;
+  }
+}
+
+/* Telas pequenas - ocultar mais itens */
+@media (max-width: 768px) {
+  .menu-item-hide-md {
+    display: none;
+  }
+}
+
+/* Telas muito pequenas - mostrar apenas File e "..." */
+@media (max-width: 480px) {
+  .menu-item-hide-sm {
+    display: none;
+  }
 }
 
 /* Menu Hambúrguer Mobile */
