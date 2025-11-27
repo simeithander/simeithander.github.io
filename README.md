@@ -126,7 +126,7 @@ https://simeithander.github.io
 
 ## 📄 Licença
 
-Este projeto é de uso pessoal.
+MIT
 
 ## 👤 Autor
 
